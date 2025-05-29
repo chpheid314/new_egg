@@ -19,6 +19,7 @@ import { Route as R3Import } from './routes/3'
 import { Route as R2Import } from './routes/2'
 import { Route as R1Import } from './routes/1'
 import { Route as IndexImport } from './routes/index'
+import { Route as GuitarGuitarIdImport } from './routes/guitar_.$guitarId'
 import { Route as Class4Import } from './routes/class_.4'
 import { Route as Class3Import } from './routes/class_.3'
 import { Route as Class2Import } from './routes/class_.2'
@@ -71,6 +72,12 @@ const R1Route = R1Import.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GuitarGuitarIdRoute = GuitarGuitarIdImport.update({
+  id: '/guitar_/$guitarId',
+  path: '/guitar/$guitarId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -186,6 +193,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Class4Import
       parentRoute: typeof rootRoute
     }
+    '/guitar_/$guitarId': {
+      id: '/guitar_/$guitarId'
+      path: '/guitar/$guitarId'
+      fullPath: '/guitar/$guitarId'
+      preLoaderRoute: typeof GuitarGuitarIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -204,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/class/2': typeof Class2Route
   '/class/3': typeof Class3Route
   '/class/4': typeof Class4Route
+  '/guitar/$guitarId': typeof GuitarGuitarIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -219,6 +234,7 @@ export interface FileRoutesByTo {
   '/class/2': typeof Class2Route
   '/class/3': typeof Class3Route
   '/class/4': typeof Class4Route
+  '/guitar/$guitarId': typeof GuitarGuitarIdRoute
 }
 
 export interface FileRoutesById {
@@ -235,6 +251,7 @@ export interface FileRoutesById {
   '/class_/2': typeof Class2Route
   '/class_/3': typeof Class3Route
   '/class_/4': typeof Class4Route
+  '/guitar_/$guitarId': typeof GuitarGuitarIdRoute
 }
 
 export interface FileRouteTypes {
@@ -252,6 +269,7 @@ export interface FileRouteTypes {
     | '/class/2'
     | '/class/3'
     | '/class/4'
+    | '/guitar/$guitarId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -266,6 +284,7 @@ export interface FileRouteTypes {
     | '/class/2'
     | '/class/3'
     | '/class/4'
+    | '/guitar/$guitarId'
   id:
     | '__root__'
     | '/'
@@ -280,6 +299,7 @@ export interface FileRouteTypes {
     | '/class_/2'
     | '/class_/3'
     | '/class_/4'
+    | '/guitar_/$guitarId'
   fileRoutesById: FileRoutesById
 }
 
@@ -296,6 +316,7 @@ export interface RootRouteChildren {
   Class2Route: typeof Class2Route
   Class3Route: typeof Class3Route
   Class4Route: typeof Class4Route
+  GuitarGuitarIdRoute: typeof GuitarGuitarIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -311,6 +332,7 @@ const rootRouteChildren: RootRouteChildren = {
   Class2Route: Class2Route,
   Class3Route: Class3Route,
   Class4Route: Class4Route,
+  GuitarGuitarIdRoute: GuitarGuitarIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -334,7 +356,8 @@ export const routeTree = rootRoute
         "/class_/1",
         "/class_/2",
         "/class_/3",
-        "/class_/4"
+        "/class_/4",
+        "/guitar_/$guitarId"
       ]
     },
     "/": {
@@ -372,6 +395,9 @@ export const routeTree = rootRoute
     },
     "/class_/4": {
       "filePath": "class_.4.tsx"
+    },
+    "/guitar_/$guitarId": {
+      "filePath": "guitar_.$guitarId.tsx"
     }
   }
 }

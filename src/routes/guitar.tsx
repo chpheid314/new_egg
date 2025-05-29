@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Route as GuitarRoute } from './guitar_.$guitarId';
 
 export const Route = createFileRoute('/guitar')({
   component: Guitar,
@@ -13,8 +14,9 @@ type PostProps = {
   author: string;
   date: string;
   passage: string;
-  link: string;
+  guitarId: number;
 };
+
 
 const Post: React.FC<PostProps> = ({
   side,
@@ -23,13 +25,14 @@ const Post: React.FC<PostProps> = ({
   author,
   date,
   passage,
-  link,
+  guitarId,
 }) => {
   
   return (
     <>
-      <div>
-      <Link to={link}
+    
+
+      <div><Link to="/guitar/$guitarId" params={{ guitarId: Route.guitarId }}
         className="absolute z-index-2 text-[#5E0B70] font-bold text-base sm:text-md md:text-17px lg:text-lg xl:text-3xl"
         style={{ left:side, top: `calc(${top} - 1%)`}}
       >
@@ -62,6 +65,8 @@ const Post: React.FC<PostProps> = ({
     </>
   );
 };
+
+
 
 type BoardProps = {
   left: string;
@@ -134,7 +139,7 @@ function Guitar() {
       <Board left="9.5%" top= "55%"  />
       <Board left="55.5%" top="55%"  />
       <Post
-        link="/List"
+        guitarId={1}
         side="11.5%"
         top="16%"
         title="제목"
@@ -143,7 +148,7 @@ function Guitar() {
         passage="ehfdkrkskqhqtlek....."
       />
       <Post
-        link="/List"
+        guitarId={2}
         side="57.5%"
         top="16%"
         title="제목"
@@ -152,7 +157,7 @@ function Guitar() {
         passage="dkwlsWK"
       />
       <Post
-        link="/class/1"
+        guitarId = {3}
         side="11.5%"
         top="59%"
         title="제목"
@@ -161,7 +166,7 @@ function Guitar() {
         passage="dkwlsWK"
       />
       <Post
-        link="/List"
+        guitarId={4}
         side="57.5%"
         top="59%"
         title="제목"
