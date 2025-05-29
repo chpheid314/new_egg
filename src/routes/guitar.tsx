@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Route as GuitarRoute } from './guitar_.$guitarId';
 
 export const Route = createFileRoute('/guitar')({
   component: Guitar,
@@ -32,7 +31,7 @@ const Post: React.FC<PostProps> = ({
     <>
     
 
-      <div><Link to="/guitar/$guitarId" params={{ guitarId: Route.guitarId }}
+      <div><Link to="/guitar/$guitarId" params={{ guitarId: guitarId.toString() }}
         className="absolute z-index-2 text-[#5E0B70] font-bold text-base sm:text-md md:text-17px lg:text-lg xl:text-3xl"
         style={{ left:side, top: `calc(${top} - 1%)`}}
       >
