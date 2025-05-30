@@ -14,16 +14,10 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as GuitarImport } from './routes/guitar'
 import { Route as DeliciousImport } from './routes/delicious'
 import { Route as ClassImport } from './routes/class'
-import { Route as R4Import } from './routes/4'
-import { Route as R3Import } from './routes/3'
-import { Route as R2Import } from './routes/2'
-import { Route as R1Import } from './routes/1'
+import { Route as IdImport } from './routes/$Id'
 import { Route as IndexImport } from './routes/index'
 import { Route as GuitarGuitarIdImport } from './routes/guitar_.$guitarId'
-import { Route as Class4Import } from './routes/class_.4'
-import { Route as Class3Import } from './routes/class_.3'
-import { Route as Class2Import } from './routes/class_.2'
-import { Route as Class1Import } from './routes/class_.1'
+import { Route as DeliciousDeliciousIdImport } from './routes/delicious_.$deliciousId'
 
 // Create/Update Routes
 
@@ -45,27 +39,9 @@ const ClassRoute = ClassImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const R4Route = R4Import.update({
-  id: '/4',
-  path: '/4',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const R3Route = R3Import.update({
-  id: '/3',
-  path: '/3',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const R2Route = R2Import.update({
-  id: '/2',
-  path: '/2',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const R1Route = R1Import.update({
-  id: '/1',
-  path: '/1',
+const IdRoute = IdImport.update({
+  id: '/$Id',
+  path: '/$Id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,27 +57,9 @@ const GuitarGuitarIdRoute = GuitarGuitarIdImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const Class4Route = Class4Import.update({
-  id: '/class_/4',
-  path: '/class/4',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Class3Route = Class3Import.update({
-  id: '/class_/3',
-  path: '/class/3',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Class2Route = Class2Import.update({
-  id: '/class_/2',
-  path: '/class/2',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Class1Route = Class1Import.update({
-  id: '/class_/1',
-  path: '/class/1',
+const DeliciousDeliciousIdRoute = DeliciousDeliciousIdImport.update({
+  id: '/delicious_/$deliciousId',
+  path: '/delicious/$deliciousId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -116,32 +74,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/1': {
-      id: '/1'
-      path: '/1'
-      fullPath: '/1'
-      preLoaderRoute: typeof R1Import
-      parentRoute: typeof rootRoute
-    }
-    '/2': {
-      id: '/2'
-      path: '/2'
-      fullPath: '/2'
-      preLoaderRoute: typeof R2Import
-      parentRoute: typeof rootRoute
-    }
-    '/3': {
-      id: '/3'
-      path: '/3'
-      fullPath: '/3'
-      preLoaderRoute: typeof R3Import
-      parentRoute: typeof rootRoute
-    }
-    '/4': {
-      id: '/4'
-      path: '/4'
-      fullPath: '/4'
-      preLoaderRoute: typeof R4Import
+    '/$Id': {
+      id: '/$Id'
+      path: '/$Id'
+      fullPath: '/$Id'
+      preLoaderRoute: typeof IdImport
       parentRoute: typeof rootRoute
     }
     '/class': {
@@ -165,32 +102,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuitarImport
       parentRoute: typeof rootRoute
     }
-    '/class_/1': {
-      id: '/class_/1'
-      path: '/class/1'
-      fullPath: '/class/1'
-      preLoaderRoute: typeof Class1Import
-      parentRoute: typeof rootRoute
-    }
-    '/class_/2': {
-      id: '/class_/2'
-      path: '/class/2'
-      fullPath: '/class/2'
-      preLoaderRoute: typeof Class2Import
-      parentRoute: typeof rootRoute
-    }
-    '/class_/3': {
-      id: '/class_/3'
-      path: '/class/3'
-      fullPath: '/class/3'
-      preLoaderRoute: typeof Class3Import
-      parentRoute: typeof rootRoute
-    }
-    '/class_/4': {
-      id: '/class_/4'
-      path: '/class/4'
-      fullPath: '/class/4'
-      preLoaderRoute: typeof Class4Import
+    '/delicious_/$deliciousId': {
+      id: '/delicious_/$deliciousId'
+      path: '/delicious/$deliciousId'
+      fullPath: '/delicious/$deliciousId'
+      preLoaderRoute: typeof DeliciousDeliciousIdImport
       parentRoute: typeof rootRoute
     }
     '/guitar_/$guitarId': {
@@ -207,50 +123,32 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/1': typeof R1Route
-  '/2': typeof R2Route
-  '/3': typeof R3Route
-  '/4': typeof R4Route
+  '/$Id': typeof IdRoute
   '/class': typeof ClassRoute
   '/delicious': typeof DeliciousRoute
   '/guitar': typeof GuitarRoute
-  '/class/1': typeof Class1Route
-  '/class/2': typeof Class2Route
-  '/class/3': typeof Class3Route
-  '/class/4': typeof Class4Route
+  '/delicious/$deliciousId': typeof DeliciousDeliciousIdRoute
   '/guitar/$guitarId': typeof GuitarGuitarIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/1': typeof R1Route
-  '/2': typeof R2Route
-  '/3': typeof R3Route
-  '/4': typeof R4Route
+  '/$Id': typeof IdRoute
   '/class': typeof ClassRoute
   '/delicious': typeof DeliciousRoute
   '/guitar': typeof GuitarRoute
-  '/class/1': typeof Class1Route
-  '/class/2': typeof Class2Route
-  '/class/3': typeof Class3Route
-  '/class/4': typeof Class4Route
+  '/delicious/$deliciousId': typeof DeliciousDeliciousIdRoute
   '/guitar/$guitarId': typeof GuitarGuitarIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/1': typeof R1Route
-  '/2': typeof R2Route
-  '/3': typeof R3Route
-  '/4': typeof R4Route
+  '/$Id': typeof IdRoute
   '/class': typeof ClassRoute
   '/delicious': typeof DeliciousRoute
   '/guitar': typeof GuitarRoute
-  '/class_/1': typeof Class1Route
-  '/class_/2': typeof Class2Route
-  '/class_/3': typeof Class3Route
-  '/class_/4': typeof Class4Route
+  '/delicious_/$deliciousId': typeof DeliciousDeliciousIdRoute
   '/guitar_/$guitarId': typeof GuitarGuitarIdRoute
 }
 
@@ -258,80 +156,50 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/1'
-    | '/2'
-    | '/3'
-    | '/4'
+    | '/$Id'
     | '/class'
     | '/delicious'
     | '/guitar'
-    | '/class/1'
-    | '/class/2'
-    | '/class/3'
-    | '/class/4'
+    | '/delicious/$deliciousId'
     | '/guitar/$guitarId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/1'
-    | '/2'
-    | '/3'
-    | '/4'
+    | '/$Id'
     | '/class'
     | '/delicious'
     | '/guitar'
-    | '/class/1'
-    | '/class/2'
-    | '/class/3'
-    | '/class/4'
+    | '/delicious/$deliciousId'
     | '/guitar/$guitarId'
   id:
     | '__root__'
     | '/'
-    | '/1'
-    | '/2'
-    | '/3'
-    | '/4'
+    | '/$Id'
     | '/class'
     | '/delicious'
     | '/guitar'
-    | '/class_/1'
-    | '/class_/2'
-    | '/class_/3'
-    | '/class_/4'
+    | '/delicious_/$deliciousId'
     | '/guitar_/$guitarId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  R1Route: typeof R1Route
-  R2Route: typeof R2Route
-  R3Route: typeof R3Route
-  R4Route: typeof R4Route
+  IdRoute: typeof IdRoute
   ClassRoute: typeof ClassRoute
   DeliciousRoute: typeof DeliciousRoute
   GuitarRoute: typeof GuitarRoute
-  Class1Route: typeof Class1Route
-  Class2Route: typeof Class2Route
-  Class3Route: typeof Class3Route
-  Class4Route: typeof Class4Route
+  DeliciousDeliciousIdRoute: typeof DeliciousDeliciousIdRoute
   GuitarGuitarIdRoute: typeof GuitarGuitarIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  R1Route: R1Route,
-  R2Route: R2Route,
-  R3Route: R3Route,
-  R4Route: R4Route,
+  IdRoute: IdRoute,
   ClassRoute: ClassRoute,
   DeliciousRoute: DeliciousRoute,
   GuitarRoute: GuitarRoute,
-  Class1Route: Class1Route,
-  Class2Route: Class2Route,
-  Class3Route: Class3Route,
-  Class4Route: Class4Route,
+  DeliciousDeliciousIdRoute: DeliciousDeliciousIdRoute,
   GuitarGuitarIdRoute: GuitarGuitarIdRoute,
 }
 
@@ -346,34 +214,19 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/1",
-        "/2",
-        "/3",
-        "/4",
+        "/$Id",
         "/class",
         "/delicious",
         "/guitar",
-        "/class_/1",
-        "/class_/2",
-        "/class_/3",
-        "/class_/4",
+        "/delicious_/$deliciousId",
         "/guitar_/$guitarId"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/1": {
-      "filePath": "1.tsx"
-    },
-    "/2": {
-      "filePath": "2.tsx"
-    },
-    "/3": {
-      "filePath": "3.tsx"
-    },
-    "/4": {
-      "filePath": "4.tsx"
+    "/$Id": {
+      "filePath": "$Id.tsx"
     },
     "/class": {
       "filePath": "class.tsx"
@@ -384,17 +237,8 @@ export const routeTree = rootRoute
     "/guitar": {
       "filePath": "guitar.tsx"
     },
-    "/class_/1": {
-      "filePath": "class_.1.tsx"
-    },
-    "/class_/2": {
-      "filePath": "class_.2.tsx"
-    },
-    "/class_/3": {
-      "filePath": "class_.3.tsx"
-    },
-    "/class_/4": {
-      "filePath": "class_.4.tsx"
+    "/delicious_/$deliciousId": {
+      "filePath": "delicious_.$deliciousId.tsx"
     },
     "/guitar_/$guitarId": {
       "filePath": "guitar_.$guitarId.tsx"

@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/4')({
+
+export const Route = createFileRoute('/delicious_/$deliciousId')({
   component: List
 });
-
-
 
 type PostProps = {
   side: string;
@@ -24,6 +23,9 @@ const Post: React.FC<PostProps> = ({
   passage,
   panname
 }) => {
+
+
+    
   
   return (
     <>
@@ -75,6 +77,18 @@ const Post: React.FC<PostProps> = ({
 
 
 function List() {
+
+  const params = useParams({ from: '/delicious_/$deliciousId' })  as { deliciousId: string };
+  const deliciousId = params.deliciousId ;
+
+
+  const clas: Record<string, { panname: string, title: string}> = {
+    "1": { panname: "dndhk", title: "dfdf" },
+    "2": { panname: "dfss", title: "sfa" },
+    "3" : { panname: "examplePan", title: "Example delicious" },
+    "4": { panname: "anotherPan", title: "Another delicious" }
+  };
+  const deliciouser = clas[deliciousId];
   return (
     <>
     <div className="bg-[#FCF1FF] p-2 w-screen h-screen overflow-auto relative" style={{ whiteSpace: 'pre-line' }}>
@@ -120,16 +134,16 @@ function List() {
           맛집
         </Link>
 
-      <Post
-        panname="기타게시판"
+<Post
+        panname={deliciouser.panname}
         side="12%"
         top="16%"
-        title="4"
+        title={deliciouser.title}
         author="작성자"
         date="작성일 : 2025.05.21 | 수정일 : 모월 모일"
         passage={"ehfdkrkskqhqtlek...ddddddddddddddddd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nddddddd.."}
       />
+      
     </div>
     </>
-  );
-};
+  );};

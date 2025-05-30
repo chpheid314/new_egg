@@ -81,10 +81,6 @@ function List() {
   const params = useParams({ from: '/guitar_/$guitarId' })
   const guitarId = params.guitarId;
 
-  if (!guitarId) {
-  return <div>기타 ID가 없습니다.</div>;
-}
-
 
   const guit: Record<string, { panname: string, title: string}> = {
     "1": { panname: "dndhk", title: "dfdf" },

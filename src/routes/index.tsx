@@ -12,7 +12,7 @@ type PostProps = {
   title: string;
   author: string;
   date: string;
-  link: string;
+  link: number;
   passage: string;
 };
 
@@ -29,7 +29,7 @@ const Post: React.FC<PostProps> = ({
   return (
     <>
       <div>
-      <Link to={link}
+      <Link to="/$Id" params={{ Id:link.toString() }}
         className="absolute z-index-2 text-[#5E0B70] font-bold text-base sm:text-md md:text-17px lg:text-lg xl:text-3xl"
         style={{ left:side, top: `calc(${top} - 1%)`}}
       >
@@ -94,7 +94,7 @@ function Index() {
       <Board left="55.5%" top="55%"  />
 
       <Post
-        link="/1"
+        link={1}
         side="11.5%"
         top="16%"
         title="제목"
@@ -103,7 +103,7 @@ function Index() {
         passage="ehfdkrkskqhqtlek....."
       />
       <Post
-        link="/2"
+        link={2}
         side="57.5%"
         top="16%"
         title="제목"
@@ -112,7 +112,7 @@ function Index() {
         passage="dkwlsWK"
       />
       <Post
-        link="/3"
+        link={3}
         side="11.5%"
         top="59%"
         title="제목"
@@ -121,7 +121,7 @@ function Index() {
         passage="dkwlsWK"
       />
       <Post
-        link="4"
+        link={4}
         side="57.5%"
         top="59%"
         title="제목"

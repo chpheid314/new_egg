@@ -13,7 +13,7 @@ type PostProps = {
   author: string;
   date: string;
   passage: string;
-  link: string;
+  deliciousId: number;
 };
 
 const Post: React.FC<PostProps> = ({
@@ -23,13 +23,13 @@ const Post: React.FC<PostProps> = ({
   author,
   date,
   passage,
-  link,
+  deliciousId
 }) => {
   
   return (
     <>
       <div>
-      <Link to={link}
+      <Link to="/delicious/$deliciousId" params={{ deliciousId: deliciousId.toString() }}
         className="absolute z-index-2 text-[#5E0B70] font-bold text-base sm:text-md md:text-17px lg:text-lg xl:text-3xl"
         style={{ left:side, top: `calc(${top} - 1%)`}}
       >
@@ -134,7 +134,7 @@ function Delicious() {
       <Board left="9.5%" top= "55%"  />
       <Board left="55.5%" top="55%"  />
 <Post
-        link="/List"
+        deliciousId={1}
         side="11.5%"
         top="16%"
         title="제목"
@@ -143,7 +143,7 @@ function Delicious() {
         passage="ehfdkrkskqhqtlek....."
       />
       <Post
-        link="/List"
+        deliciousId={2}
         side="57.5%"
         top="16%"
         title="제목"
@@ -152,7 +152,7 @@ function Delicious() {
         passage="dkwlsWK"
       />
       <Post
-        link="/class/1"
+        deliciousId={3}
         side="11.5%"
         top="59%"
         title="제목"
@@ -161,7 +161,7 @@ function Delicious() {
         passage="dkwlsWK"
       />
       <Post
-        link="/List"
+        deliciousId={4}
         side="57.5%"
         top="59%"
         title="제목"

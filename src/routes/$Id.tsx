@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/2')({
+
+export const Route = createFileRoute('/$Id')({
   component: List
 });
-
-
 
 type PostProps = {
   side: string;
@@ -24,6 +23,9 @@ const Post: React.FC<PostProps> = ({
   passage,
   panname
 }) => {
+
+
+    
   
   return (
     <>
@@ -75,6 +77,18 @@ const Post: React.FC<PostProps> = ({
 
 
 function List() {
+
+  const params = useParams({ from: '/$Id' })
+  const Id = params.Id;
+
+
+  const clas: Record<string, { panname: string, title: string}> = {
+    "1": { panname: "dndhk", title: "dfdf" },
+    "2": { panname: "dfss", title: "sfa" },
+    "3" : { panname: "examplePan", title: "Example Class" },
+    "4": { panname: "anotherPan", title: "Another Class" }
+  };
+  const Ideal = clas[Id];
   return (
     <>
     <div className="bg-[#FCF1FF] p-2 w-screen h-screen overflow-auto relative" style={{ whiteSpace: 'pre-line' }}>
@@ -120,16 +134,16 @@ function List() {
           맛집
         </Link>
 
-      <Post
-        panname="기타게시판"
+<Post
+        panname={Ideal.panname}
         side="12%"
         top="16%"
-        title="2"
+        title={Ideal.title}
         author="작성자"
         date="작성일 : 2025.05.21 | 수정일 : 모월 모일"
         passage={"ehfdkrkskqhqtlek...ddddddddddddddddd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nddddddd.."}
       />
+      
     </div>
     </>
-  );
-};
+  );};

@@ -13,7 +13,7 @@ type PostProps = {
   author: string;
   date: string;
   passage: string;
-  link: string;
+  classId: number;
 };
 
 const Post: React.FC<PostProps> = ({
@@ -23,13 +23,13 @@ const Post: React.FC<PostProps> = ({
   author,
   date,
   passage,
-  link,
+  classId,
 }) => {
   
   return (
     <>
       <div>
-      <Link to={link}
+      <Link to="/class/$classId" params={{ classId: classId.toString() }}
         className="absolute z-index-2 text-[#5E0B70] font-bold text-base sm:text-md md:text-17px lg:text-lg xl:text-3xl"
         style={{ left:side, top: `calc(${top} - 1%)`}}
       >
@@ -136,7 +136,7 @@ function Class() {
 
       
       <Post
-        link="/class/1"
+        classId = {1}
         side="11.5%"
         top="16%"
         title="1"
@@ -145,7 +145,7 @@ function Class() {
         passage="ehfdkrkskqhqtlek....."
       />
       <Post
-        link="/class/2"
+      classId = {2}
         side="57.5%"
         top="16%"
         title="2"
@@ -154,7 +154,7 @@ function Class() {
         passage="dkwlsWK"
       />
       <Post
-        link="/class/3"
+        classId={3}
         side="11.5%"
         top="59%"
         title="3"
@@ -163,7 +163,7 @@ function Class() {
         passage="dkwlsWK"
       />
       <Post
-        link="/class/4"
+        classId = {4}
         side="57.5%"
         top="59%"
         title="제4"
