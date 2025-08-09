@@ -1,0 +1,179 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/delicious")({
+  component: Delicious,
+});
+
+type PostProps = {
+  side: string;
+  top: string;
+  title: string;
+  author: string;
+  date: string;
+  passage: string;
+  deliciousId: number;
+};
+
+const Post: React.FC<PostProps> = ({
+  side,
+  top,
+  title,
+  author,
+  date,
+  passage,
+  deliciousId,
+}) => {
+  return (
+    <>
+      <div>
+        <Link
+          to="/delicious/$deliciousId"
+          params={{ deliciousId: deliciousId.toString() }}
+          className="absolute z-index-2 text-[#5E0B70] font-bold text-base sm:text-md md:text-17px lg:text-lg xl:text-3xl"
+          style={{ left: side, top: `calc(${top} - 1%)` }}
+        >
+          {title}
+        </Link>
+      </div>
+
+      <div
+        className="absolute text-[rgb(170,119,181)] font-bold text-base sm:text-sm md:text-md lg:text-17px xl:text-lg"
+        style={{ left: side, top: `calc(${top} + 3.7%)` }}
+      >
+        {author} | {date}
+      </div>
+      <div
+        className="absolute text-[#5E0B70] font-bold text-base sm:text-14px md:text-15px lg:text-16px xl:text-17px"
+        style={{
+          left: `calc(${side})`,
+          top: `calc(${top} + 10%)`,
+          width: "31%",
+        }}
+      >
+        {passage}
+      </div>
+
+      <div
+        className="absolute bg-[#AA77B5]"
+        style={{
+          left: side,
+          top: `calc(${top} + 8%)`,
+          width: "31%",
+          height: "0.3%",
+        }}
+      ></div>
+    </>
+  );
+};
+
+type BoardProps = {
+  left: string;
+  top: string;
+};
+
+const Board: React.FC<BoardProps> = ({ left, top }) => {
+  return (
+    <>
+      {/* 게시판 영역 */}
+      <div
+        className="absolute w-[35%] h-[40%] bg-[#FCF1FF] rounded-lg border-[3px] border-[#5E0B70]"
+        style={{
+          left: left,
+          top: top,
+        }}
+      ></div>
+    </>
+  );
+};
+
+function Delicious() {
+  return (
+    <>
+      <div
+        className="bg-[#F8D9FF] p-2 w-screen h-screen overflow-auto relative"
+        style={{ whiteSpace: "pre-line" }}
+      >
+        <p
+          className="absolute left-[29.8%] top-[7.5%] w-[7.5%] h-[4.4%] text-base sm:text-sm md:text-md lg:text-17px xl:text-lg
+             bg-[#8A13A4] border-[1.7px] border-[#5E0B70] text-[#F6CDFF] rounded-lg font-bold 
+             transform -translate-x-1/2 -translate-y-1/2
+             flex items-center justify-center"
+        >
+          맛집
+        </p>
+
+        {/* <Link
+          to="/"
+          className="absolute left-[12.8%] top-[7.5%] w-[7.5%] h-[4.4%] text-base sm:text-sm md:text-md lg:text-17px xl:text-lg
+             bg-[#F8D9FF] border-[#5E0B70] border-[1.7px] text-[#8A13A4] rounded-lg font-bold 
+             hover:bg-[#8A13A4] hover:text-[#F6CDFF] cursor-pointer 
+             transform -translate-x-1/2 -translate-y-1/2
+             flex items-center justify-center"
+        >
+          전체
+        </Link> */}
+        <Link
+          to="/class"
+          className="absolute left-[21.3%] top-[7.5%] w-[7.5%] h-[4.4%] text-base sm:text-sm md:text-md lg:text-17px xl:text-lg
+             bg-[#F8D9FF] border-[1.7px] border-[#5E0B70] text-[#8A13A4] rounded-lg font-bold 
+             hover:bg-[#8A13A4] hover:text-[#F6CDFF] hover:border-[#8A13A4] hover:border-[1.7px] cursor-pointer 
+             transform -translate-x-1/2 -translate-y-1/2
+             flex items-center justify-center"
+        >
+          수업
+        </Link>
+
+        <Link
+          to="/guitar"
+          className="absolute left-[38.3%] top-[7.5%] w-[7.5%] h-[4.4%] text-base sm:text-sm md:text-md lg:text-17px xl:text-lg
+             bg-[#F8D9FF] border-[1.7px] border-[#5E0B70] text-[#8A13A4] rounded-lg font-bold 
+             hover:bg-[#8A13A4] hover:text-[#F6CDFF] cursor-pointer 
+             transform -translate-x-1/2 -translate-y-1/2
+             flex items-center justify-center"
+        >
+          기타
+        </Link>
+        <Board left="9.5%" top="12%" />
+        <Board left="55.5%" top="12%" />
+        <Board left="9.5%" top="55%" />
+        <Board left="55.5%" top="55%" />
+        <Post
+          deliciousId={1}
+          side="11.5%"
+          top="16%"
+          title="맛집"
+          author="작성자"
+          date="2025.05.21"
+          passage="시그널 / 월맥 / 역할맥"
+        />
+        <Post
+          deliciousId={2}
+          side="57.5%"
+          top="16%"
+          title="회식"
+          author="작성자"
+          date="2025.05.21"
+          passage="영도씨: 그냥 맛있음. 정우림국밥: 생긴지 얼마 안됐으나 가본다면 국밥의 프리미엄은 어떤 모습을 갖춰야 하는지 알 수 있습니다.. 가까워서 방문도 쉬워요. 전 소고기국밥만 먹어봤는데, 기존 소고기국밥이라면 생소할 수 있는 한방 재료들이 아낌없이 들어가 있어요. 국물을 먹어보면 몸보신되는 느낌이 제대로..."
+        />
+        <Post
+          deliciousId={3}
+          side="11.5%"
+          top="59%"
+          title="개인(배달 위주)"
+          author="작성자"
+          date="2025.05.21"
+          passage="육바연 / 화궁방마라탕"
+        />
+        <Post
+          deliciousId={4}
+          side="57.5%"
+          top="59%"
+          title="간식"
+          author="작성자"
+          date="2025.05.21"
+          passage="도카"
+        />
+      </div>
+    </>
+  );
+}
